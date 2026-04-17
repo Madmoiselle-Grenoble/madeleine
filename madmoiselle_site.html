@@ -1,542 +1,227 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mad'moiselle by Naya Délice</title>
-  <meta name="description" content="Madeleines artisanales inspirées des saveurs du monde. Grenoble." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mad'moiselle by Naya Délice — Madeleines artisanales</title>
+  <meta name="description" content="Madeleines artisanales inspirées des saveurs du monde. Grenoble."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --blanc: #FFFFFF;
       --creme: #FDF8F3;
       --or: #C9A96E;
       --or-deep: #9A7240;
       --aubergine: #5B4A8A;
-      --aubergine-light: #EDE9F8;
       --rose: #F7C5D8;
-      --rose-deep: #D4829E;
       --dark: #1C1412;
       --mid: #5A4E48;
       --light: #A89890;
     }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'DM Sans',sans-serif; background:#fff; color:var(--dark); overflow-x:hidden; }
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--blanc);
-      color: var(--dark);
-      overflow-x: hidden;
-    }
-
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      padding: 0 60px;
-      height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(255,255,255,0.96);
-      border-bottom: 1px solid rgba(201,169,110,0.2);
+      position:fixed; top:0; left:0; right:0; z-index:999;
+      height:64px; padding:0 48px;
+      display:flex; align-items:center; justify-content:space-between;
+      background:rgba(255,255,255,0.97);
+      border-bottom:1px solid rgba(201,169,110,0.25);
     }
-    .nav-logo {
-      display: flex; align-items: center; gap: 12px;
-    }
-    .nav-logo-img {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: var(--aubergine);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
-    }
-    .nav-logo-text {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 17px; color: var(--dark);
-    }
-    .nav-logo-text span { font-style: italic; color: var(--aubergine); }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--mid); text-decoration: none; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--or-deep); }
-    .nav-cta {
-      background: var(--aubergine); color: white;
-      padding: 10px 24px; font-size: 11px;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none; transition: background 0.2s;
-    }
-    .nav-cta:hover { background: var(--or-deep); }
+    .logo { font-family:'Libre Baskerville',serif; font-size:18px; color:var(--dark); }
+    .logo em { font-style:italic; color:var(--aubergine); }
+    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links a { font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); text-decoration:none; transition:color .2s; }
+    .nav-links a:hover { color:var(--or-deep); }
+    .nav-btn { background:var(--aubergine); color:#fff; padding:10px 22px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; transition:background .2s; }
+    .nav-btn:hover { background:var(--dark); }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
-      min-height: 100vh;
-      padding-top: 68px;
-      display: grid; grid-template-columns: 55% 45%;
+      display:grid;
+      grid-template-columns:55% 45%;
+      min-height:100vh;
+      padding-top:64px;
     }
     .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 80px 64px 80px 60px;
+      display:flex; flex-direction:column; justify-content:center;
+      padding:80px 60px 80px 80px;
+      background:#fff;
     }
-    .hero-kicker {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--or-deep); margin-bottom: 28px;
-    }
-    .hero-kicker::before {
-      content: ''; width: 28px; height: 1px; background: var(--or);
-    }
-    .hero-title {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(48px, 5.5vw, 80px);
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      color: var(--dark);
-      margin-bottom: 6px;
-    }
-    .hero-title-italic {
-      font-family: 'Libre Baskerville', serif;
-      font-style: italic;
-      font-size: clamp(48px, 5.5vw, 80px);
-      line-height: 1.05;
-      color: var(--aubergine);
-      margin-bottom: 32px;
-      display: block;
-    }
-    .hero-desc {
-      font-size: 16px; line-height: 1.85; color: var(--mid);
-      max-width: 420px; margin-bottom: 48px; font-weight: 300;
-    }
-    .hero-actions { display: flex; align-items: center; gap: 20px; }
-    .btn-primary {
-      background: var(--aubergine); color: white;
-      padding: 16px 36px; font-size: 12px;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
-      transition: background 0.25s, transform 0.2s;
-    }
-    .btn-primary:hover { background: var(--dark); transform: translateY(-2px); }
-    .btn-secondary {
-      font-size: 13px; color: var(--mid); text-decoration: none;
-      display: flex; align-items: center; gap: 8px;
-      transition: color 0.2s;
-    }
-    .btn-secondary:hover { color: var(--aubergine); }
-    .btn-secondary span { font-size: 18px; }
-
     .hero-right {
-      background: var(--creme);
-      position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
+      position:relative;
+      overflow:hidden;
+      min-height:500px;
     }
-    .hero-img-wrap {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
+    .hero-bg {
+      position:absolute; top:0; left:0;
+      width:100%; height:100%;
+      object-fit:contain; object-position:center center;
+      background:var(--creme);
+      display:block;
     }
-    .hero-placeholder {
-      width: 380px; height: 460px;
-      background: linear-gradient(160deg, var(--rose) 0%, var(--creme) 50%, rgba(201,169,110,0.3) 100%);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 16px;
-      position: relative;
+    .hero-overlay { display:none; }
+    .hero-content {
+      position:static;
+      display:contents;
     }
-    .hero-placeholder-emoji { font-size: 96px; }
-    .hero-placeholder-label {
-      font-family: 'Libre Baskerville', serif; font-style: italic;
-      font-size: 15px; color: var(--mid); letter-spacing: 0.05em;
-    }
-    .hero-img-note {
-      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--light); white-space: nowrap;
-    }
-    .hero-tag {
-      position: absolute; top: 32px; right: 32px;
-      background: var(--aubergine); color: white;
-      width: 88px; height: 88px; border-radius: 50%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      font-family: 'Libre Baskerville', serif; font-style: italic;
-      font-size: 12px; line-height: 1.5; text-align: center;
-    }
-    .hero-scroll {
-      position: absolute; bottom: 32px; left: 60px;
-      display: flex; align-items: center; gap: 12px;
-      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--light);
-    }
-    .hero-scroll::before {
-      content: ''; display: block;
-      width: 1px; height: 40px; background: var(--or);
-    }
+    .hero-eyebrow { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--or-deep); margin-bottom:24px; display:flex; align-items:center; gap:12px; }
+    .hero-eyebrow::before { content:''; width:32px; height:1px; background:var(--or); flex-shrink:0; }
+    .hero-h1 { font-family:'Libre Baskerville',serif; font-size:clamp(44px,5vw,80px); line-height:1.05; color:var(--dark); margin-bottom:8px; }
+    .hero-h1 em { font-style:italic; color:var(--aubergine); display:block; }
+    .hero-sub { font-family:'Libre Baskerville',serif; font-style:italic; font-size:clamp(16px,1.8vw,22px); color:var(--mid); margin-bottom:40px; }
+    .hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
+    .btn-gold { background:var(--or-deep); color:#fff; padding:15px 36px; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; transition:background .25s; text-decoration:none; display:inline-block; }
+    .btn-gold:hover { background:var(--aubergine); }
+    .btn-outline { background:transparent; color:var(--dark); padding:15px 36px; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; border:1px solid rgba(28,20,18,0.3); cursor:pointer; font-family:'DM Sans',sans-serif; transition:border-color .25s; text-decoration:none; display:inline-block; }
+    .btn-outline:hover { border-color:var(--dark); }
 
-    /* ─── STRIP ─── */
-    .strip {
-      background: var(--aubergine);
-      padding: 18px 60px;
-      overflow: hidden;
-    }
-    .strip-inner {
-      display: flex; gap: 64px; align-items: center;
-      animation: marquee 20s linear infinite;
-      white-space: nowrap;
-    }
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .strip-item {
-      font-family: 'Libre Baskerville', serif; font-style: italic;
-      font-size: 14px; color: rgba(255,255,255,0.75);
-      flex-shrink: 0;
-    }
-    .strip-dot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--or); flex-shrink: 0;
-    }
+    /* STRIP */
+    .strip { background:var(--aubergine); padding:16px 0; overflow:hidden; }
+    .strip-track { display:flex; gap:52px; align-items:center; white-space:nowrap; animation:marquee 26s linear infinite; }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .strip-item { font-family:'Libre Baskerville',serif; font-style:italic; font-size:14px; color:rgba(255,255,255,0.7); flex-shrink:0; }
+    .strip-sep { width:5px; height:5px; border-radius:50%; background:var(--or); flex-shrink:0; }
 
-    /* ─── SECTION GÉNÉRIQUE ─── */
-    .section { padding: 100px 60px; }
-    .section-label {
-      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--or-deep); margin-bottom: 14px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .section-label::before { content: ''; width: 22px; height: 1px; background: var(--or); }
-    .section-h {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(32px, 3.8vw, 54px);
-      line-height: 1.1; letter-spacing: -0.01em;
-    }
-    .section-h em { font-style: italic; color: var(--aubergine); }
+    /* SECTIONS COMMUNES */
+    .section { padding:96px 80px; }
+    .s-eye { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--or-deep); margin-bottom:14px; display:flex; align-items:center; gap:10px; }
+    .s-eye::before { content:''; width:22px; height:1px; background:var(--or); }
+    .s-title { font-family:'Libre Baskerville',serif; font-size:clamp(28px,4vw,50px); line-height:1.1; }
+    .s-title em { font-style:italic; color:var(--aubergine); }
 
-    /* ─── HISTOIRE ─── */
-    .histoire { background: var(--blanc); }
-    .histoire-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-      align-items: center; margin-top: 64px;
-    }
-    .histoire-body {
-      font-size: 16px; line-height: 1.9; color: var(--mid);
-      font-weight: 300; margin-bottom: 40px;
-    }
-    .valeurs { display: flex; flex-direction: column; gap: 0; }
-    .valeur {
-      display: flex; align-items: flex-start; gap: 20px;
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(201,169,110,0.2);
-    }
-    .valeur:first-child { border-top: 1px solid rgba(201,169,110,0.2); }
-    .valeur-num {
-      font-family: 'Libre Baskerville', serif; font-style: italic;
-      font-size: 13px; color: var(--or); min-width: 24px; padding-top: 2px;
-    }
-    .valeur-content {}
-    .valeur-title { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
-    .valeur-desc { font-size: 13px; color: var(--light); line-height: 1.6; }
+    /* HISTOIRE */
+    .histoire { background:#fff; }
+    .histoire-body-wrap { max-width:680px; margin-top:52px; }
+    .h-quote { font-family:'Libre Baskerville',serif; font-style:italic; font-size:21px; line-height:1.65; color:var(--aubergine); border-left:3px solid var(--or); padding-left:26px; margin-bottom:32px; }
+    .h-body { font-size:15px; line-height:1.9; color:var(--mid); font-weight:300; margin-bottom:36px; }
+    .valeurs { display:flex; flex-direction:column; }
+    .valeur { display:flex; gap:18px; padding:16px 0; border-bottom:1px solid rgba(201,169,110,0.2); }
+    .valeur:first-child { border-top:1px solid rgba(201,169,110,0.2); }
+    .v-num { font-family:'Libre Baskerville',serif; font-style:italic; font-size:13px; color:var(--or); min-width:22px; padding-top:2px; }
+    .v-title { font-size:14px; font-weight:500; margin-bottom:2px; }
+    .v-desc { font-size:13px; color:var(--light); line-height:1.6; }
 
-    .histoire-visual {
-      background: var(--creme);
-      aspect-ratio: 4/5;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 20px;
-      position: relative; overflow: hidden;
+    /* COLLECTION */
+    .collection { background:var(--creme); }
+    .coll-header { display:flex; align-items:flex-end; justify-content:space-between; gap:40px; margin-bottom:52px; flex-wrap:wrap; }
+    .coll-intro { font-size:15px; line-height:1.85; color:var(--mid); font-weight:300; max-width:400px; }
+    .grid-6 { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    .card { background:#fff; overflow:hidden; transition:transform .3s, box-shadow .3s; position:relative; }
+    .card:hover { transform:translateY(-6px); box-shadow:0 18px 48px rgba(91,74,138,0.12); }
+    .card-flag {
+      width:40px; height:30px;
+      object-fit:cover;
+      box-shadow:0 2px 6px rgba(0,0,0,0.15);
+      margin-bottom:10px;
+      display:block;
     }
-    .histoire-visual-emoji { font-size: 120px; }
-    .histoire-visual-caption {
-      font-family: 'Libre Baskerville', serif; font-style: italic;
-      font-size: 18px; color: var(--mid);
-      text-align: center; padding: 0 32px;
-      line-height: 1.5;
-    }
-    .histoire-visual-note {
-      position: absolute; bottom: 20px;
-      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--light);
-    }
-    .histoire-quote {
-      font-family: 'Libre Baskerville', serif; font-style: italic;
-      font-size: 22px; line-height: 1.6; color: var(--aubergine);
-      border-left: 3px solid var(--or);
-      padding-left: 28px; margin-bottom: 40px;
-    }
+    .card-bar { height:4px; }
+    .card-img { width:100%; height:300px; object-fit:contain; object-position:center; background:var(--creme); display:block; }
+    .card-img-liban { width:100%; height:300px; object-fit:cover; object-position:center 35%; background:var(--creme); display:block; }
+    .card-body { padding:24px 26px 28px; }
+    .card-country { font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--light); margin-bottom:6px; }
+    .card-name { font-family:'Libre Baskerville',serif; font-size:21px; margin-bottom:10px; line-height:1.2; }
+    .card-name em { font-style:italic; color:var(--aubergine); }
+    .card-desc { font-size:13px; line-height:1.75; color:var(--mid); font-weight:300; margin-bottom:14px; }
+    .card-tags { display:flex; flex-wrap:wrap; gap:6px; }
+    .tag { font-size:10px; letter-spacing:0.06em; padding:4px 11px; border:1px solid rgba(201,169,110,0.35); color:var(--or-deep); background:var(--creme); }
 
-    /* ─── COLLECTION ─── */
-    .collection { background: var(--creme); }
-    .collection-top {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      margin-bottom: 60px; gap: 40px;
-    }
-    .collection-intro {
-      font-size: 15px; line-height: 1.85; color: var(--mid);
-      max-width: 400px; font-weight: 300;
-    }
-    .destinations {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-    }
-    .dest {
-      background: white;
-      padding: 40px 32px 36px;
-      position: relative; overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
-    }
-    .dest:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 60px rgba(91,74,138,0.12);
-      z-index: 2;
-    }
-    .dest-top-bar {
-      position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    }
-    .dest-flag { font-size: 38px; margin-bottom: 16px; display: block; }
-    .dest-country {
-      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--light); margin-bottom: 8px;
-    }
-    .dest-name {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 21px; line-height: 1.2; margin-bottom: 16px;
-    }
-    .dest-name em { font-style: italic; color: var(--aubergine); }
-    .dest-desc {
-      font-size: 13px; line-height: 1.7; color: var(--mid);
-      font-weight: 300; margin-bottom: 20px;
-    }
-    .dest-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .dest-tag {
-      font-size: 10px; letter-spacing: 0.06em;
-      padding: 4px 12px;
-      background: var(--creme);
-      color: var(--or-deep);
-      border: 1px solid rgba(201,169,110,0.3);
-    }
-    .dest-img-placeholder {
-      width: 100%; height: 120px;
-      background: linear-gradient(135deg, rgba(201,169,110,0.1), rgba(247,197,216,0.2));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 40px; margin-bottom: 24px;
-    }
+    /* FORMATS */
+    .formats { background:#fff; }
+    .fmt-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:52px; }
+    .fmt { padding:42px 30px; border:1px solid rgba(201,169,110,0.25); text-align:center; transition:transform .25s, border-color .25s; position:relative; }
+    .fmt:hover { transform:translateY(-4px); border-color:var(--or); }
+    .fmt.star { background:var(--dark); border-color:var(--dark); color:#fff; }
+    .fmt.star:hover { border-color:var(--or); }
+    .fmt-badge { position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--or); color:#fff; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; padding:5px 14px; white-space:nowrap; }
+    .fmt-icon { font-size:38px; margin-bottom:18px; display:block; }
+    .fmt-lbl { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--or); margin-bottom:6px; }
+    .fmt-name { font-family:'Libre Baskerville',serif; font-size:22px; margin-bottom:10px; }
+    .fmt-desc { font-size:13px; line-height:1.8; color:var(--mid); font-weight:300; margin-bottom:22px; }
+    .fmt.star .fmt-desc { color:rgba(255,255,255,0.6); }
+    .fmt-price-big { font-family:'Libre Baskerville',serif; font-size:30px; color:var(--or-deep); }
+    .fmt-price-big sub { font-size:14px; color:var(--light); font-weight:300; }
+    .fmt-rows { display:flex; flex-direction:column; gap:8px; }
+    .fmt-row { display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:rgba(255,255,255,0.07); }
+    .fmt-row-lbl { font-size:12px; color:rgba(255,255,255,0.6); }
+    .fmt-row-val { font-family:'Libre Baskerville',serif; font-size:19px; color:var(--or); }
+    .fmt-devis { font-size:16px; color:var(--mid); letter-spacing:0.04em; }
 
-    /* ─── FORMATS ─── */
-    .formats { background: var(--blanc); }
-    .formats-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
-      margin-top: 56px;
-    }
-    .format {
-      padding: 48px 36px;
-      border: 1px solid rgba(201,169,110,0.25);
-      position: relative; text-align: center;
-      transition: border-color 0.25s, transform 0.25s;
-    }
-    .format:hover { border-color: var(--or); transform: translateY(-4px); }
-    .format.star {
-      background: var(--dark); border-color: var(--dark); color: white;
-    }
-    .format.star:hover { border-color: var(--or); }
-    .format-badge {
-      position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
-      background: var(--or); color: white;
-      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 5px 16px;
-    }
-    .format-icon { font-size: 44px; margin-bottom: 24px; display: block; }
-    .format-label {
-      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--or); margin-bottom: 8px;
-    }
-    .format.star .format-label { color: var(--or); }
-    .format-name {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 26px; margin-bottom: 14px; letter-spacing: -0.01em;
-    }
-    .format-desc {
-      font-size: 13px; line-height: 1.8; margin-bottom: 28px;
-      color: var(--mid); font-weight: 300;
-    }
-    .format.star .format-desc { color: rgba(255,255,255,0.6); }
-    .format-price {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 32px; color: var(--or-deep); letter-spacing: -0.02em;
-    }
-    .format.star .format-price { color: var(--or); }
-    .format-price sub { font-size: 15px; font-weight: 300; color: var(--light); vertical-align: middle; }
-    .format.star .format-price sub { color: rgba(255,255,255,0.4); }
+    /* TROUVER */
+    .trouver { background:var(--creme); }
+    .trouver-inner { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; margin-top:52px; }
+    .trouver-title { font-family:'Libre Baskerville',serif; font-size:clamp(24px,3vw,40px); line-height:1.15; margin-bottom:18px; }
+    .trouver-title em { font-style:italic; color:var(--aubergine); }
+    .trouver-body { font-size:15px; line-height:1.85; color:var(--mid); font-weight:300; margin-bottom:32px; }
+    .t-items { display:flex; flex-direction:column; gap:10px; }
+    .t-item { display:flex; align-items:center; gap:14px; padding:14px 18px; background:#fff; }
+    .t-icon { font-size:20px; }
+    .t-title { font-size:14px; font-weight:500; }
+    .t-sub { font-size:12px; color:var(--light); margin-top:1px; }
+    .map-block { overflow:hidden; border:1px solid rgba(201,169,110,0.25); }
+    .map-block iframe { width:100%; height:300px; border:0; display:block; }
+    .map-caption { background:#fff; padding:16px 20px; }
+    .map-cap-title { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--or-deep); margin-bottom:3px; }
+    .map-cap-addr { font-size:14px; font-weight:500; }
+    .map-cap-hours { font-size:12px; color:var(--light); margin-top:2px; }
 
-    /* ─── TROUVER ─── */
-    .trouver {
-      background: var(--creme);
-      padding: 80px 60px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-      align-items: center;
-    }
-    .trouver-title {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(28px, 3vw, 44px);
-      line-height: 1.15; margin-bottom: 24px;
-    }
-    .trouver-title em { font-style: italic; color: var(--aubergine); }
-    .trouver-desc {
-      font-size: 15px; line-height: 1.85; color: var(--mid);
-      font-weight: 300; margin-bottom: 40px;
-    }
-    .trouver-items { display: flex; flex-direction: column; gap: 16px; }
-    .trouver-item {
-      display: flex; align-items: center; gap: 18px;
-      padding: 18px 24px;
-      background: white;
-    }
-    .trouver-item-icon { font-size: 22px; }
-    .trouver-item-title { font-size: 14px; font-weight: 500; }
-    .trouver-item-sub { font-size: 12px; color: var(--light); margin-top: 1px; }
-    .trouver-visual {
-      background: white;
-      padding: 48px;
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; gap: 12px;
-    }
-    .trouver-visual-emoji { font-size: 80px; }
-    .trouver-visual-title {
-      font-family: 'Libre Baskerville', serif; font-size: 20px;
-    }
-    .trouver-visual-sub {
-      font-size: 13px; color: var(--light); line-height: 1.7;
-    }
-    .trouver-insta {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-top: 8px;
-      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--aubergine); text-decoration: none;
-      border-bottom: 1px solid var(--aubergine); padding-bottom: 2px;
-      transition: color 0.2s;
-    }
-    .trouver-insta:hover { color: var(--or-deep); border-color: var(--or-deep); }
+    /* CONTACT */
+    .contact { background:#fff; }
+    .contact-inner { display:grid; grid-template-columns:1fr 1.4fr; gap:72px; align-items:start; margin-top:52px; }
+    .c-body { font-size:15px; line-height:1.9; color:var(--mid); font-weight:300; margin-bottom:32px; }
+    .c-infos { display:flex; flex-direction:column; gap:18px; }
+    .ci { display:flex; flex-direction:column; gap:3px; }
+    .ci-lbl { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--or-deep); }
+    .ci-val { font-size:15px; }
+    .form { display:flex; flex-direction:column; gap:16px; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .field { display:flex; flex-direction:column; gap:6px; }
+    .field label { font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--mid); }
+    .field input, .field select, .field textarea { font-family:'DM Sans',sans-serif; font-size:14px; color:var(--dark); background:var(--creme); border:1px solid rgba(201,169,110,0.35); padding:13px 15px; outline:none; transition:border-color .2s; width:100%; resize:vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color:var(--aubergine); background:#fff; }
+    .field textarea { min-height:110px; }
+    .form-note { font-size:11px; color:var(--light); line-height:1.7; }
+    .form-btn { background:var(--aubergine); color:#fff; padding:14px 34px; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; transition:background .25s; align-self:flex-start; }
+    .form-btn:hover { background:var(--dark); }
+    .form-ok { display:none; padding:18px 22px; background:#EDE9F8; border-left:3px solid var(--aubergine); font-size:14px; color:var(--aubergine); line-height:1.7; }
 
-    /* ─── CONTACT ─── */
-    .contact { background: var(--blanc); }
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-      align-items: start; margin-top: 60px;
-    }
-    .contact-left .contact-body {
-      font-size: 15px; line-height: 1.9; color: var(--mid);
-      font-weight: 300; margin-bottom: 40px;
-    }
-    .contact-infos { display: flex; flex-direction: column; gap: 20px; }
-    .contact-info-item { display: flex; flex-direction: column; gap: 3px; }
-    .contact-info-label {
-      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--or-deep);
-    }
-    .contact-info-val {
-      font-size: 15px; color: var(--dark); font-weight: 400;
-    }
+    /* FOOTER */
+    footer { background:var(--dark); padding:48px 80px 28px; }
+    .ft-top { display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:22px; gap:48px; flex-wrap:wrap; }
+    .ft-logo { font-family:'Libre Baskerville',serif; font-style:italic; font-size:21px; color:var(--or); margin-bottom:6px; }
+    .ft-tag { font-family:'Libre Baskerville',serif; font-style:italic; font-size:13px; color:rgba(255,255,255,0.3); }
+    .ft-links { display:flex; gap:52px; flex-wrap:wrap; }
+    .fcol-t { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--or); margin-bottom:12px; }
+    .fcol ul { list-style:none; display:flex; flex-direction:column; gap:7px; }
+    .fcol a { font-size:13px; color:rgba(255,255,255,0.38); text-decoration:none; transition:color .2s; }
+    .fcol a:hover { color:var(--or); }
+    .ft-bot { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+    .ft-copy { font-size:11px; color:rgba(255,255,255,0.18); }
+    .ft-siren { font-size:10px; color:rgba(255,255,255,0.13); }
 
-    /* FORM */
-    .form { display: flex; flex-direction: column; gap: 20px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .field { display: flex; flex-direction: column; gap: 8px; }
-    .field label {
-      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--mid);
-    }
-    .field input, .field select, .field textarea {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px; color: var(--dark);
-      background: var(--creme);
-      border: 1px solid rgba(201,169,110,0.3);
-      padding: 14px 16px;
-      outline: none; transition: border-color 0.2s;
-      width: 100%; resize: vertical;
-    }
-    .field input:focus, .field select:focus, .field textarea:focus {
-      border-color: var(--aubergine);
-    }
-    .field textarea { min-height: 120px; }
-    .form-submit {
-      background: var(--aubergine); color: white;
-      padding: 16px 40px; font-size: 12px;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
-      transition: background 0.25s, transform 0.2s;
-      align-self: flex-start;
-    }
-    .form-submit:hover { background: var(--dark); transform: translateY(-2px); }
-    .form-note {
-      font-size: 11px; color: var(--light); line-height: 1.7;
-    }
-    .form-success {
-      display: none;
-      padding: 20px 24px;
-      background: var(--aubergine-light);
-      border-left: 3px solid var(--aubergine);
-      font-size: 14px; color: var(--aubergine); line-height: 1.7;
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--dark);
-      padding: 48px 60px 32px;
-    }
-    .footer-top {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 28px; gap: 60px;
-    }
-    .footer-brand {}
-    .footer-logo {
-      font-family: 'Libre Baskerville', serif; font-style: italic;
-      font-size: 22px; color: var(--or); margin-bottom: 10px;
-    }
-    .footer-tagline {
-      font-size: 13px; color: rgba(255,255,255,0.4);
-      font-style: italic; font-family: 'Libre Baskerville', serif;
-    }
-    .footer-links { display: flex; gap: 60px; }
-    .footer-col-title {
-      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--or); margin-bottom: 14px;
-    }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-col a {
-      font-size: 13px; color: rgba(255,255,255,0.45);
-      text-decoration: none; transition: color 0.2s;
-    }
-    .footer-col a:hover { color: var(--or); }
-    .footer-bottom {
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 0.06em; }
-    .footer-siren { font-size: 10px; color: rgba(255,255,255,0.15); }
-
-    /* ─── REVEAL ─── */
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .revealed { opacity: 1; transform: translateY(0); }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 960px) {
-      nav { padding: 0 24px; }
-      .nav-links, .nav-cta { display: none; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-right { display: none; }
-      .hero-left { padding: 60px 24px 60px; }
-      .histoire-grid, .contact-grid, .trouver { grid-template-columns: 1fr; gap: 40px; }
-      .histoire-visual { aspect-ratio: auto; padding: 48px; }
-      .section { padding: 64px 24px; }
-      .destinations { grid-template-columns: 1fr; gap: 2px; }
-      .formats-grid { grid-template-columns: 1fr; gap: 20px; }
-      .collection-top { flex-direction: column; }
-      .trouver { padding: 64px 24px; }
-      footer { padding: 40px 24px 24px; }
-      .footer-top { flex-direction: column; }
-      .footer-links { flex-direction: column; gap: 32px; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-      .strip { padding: 16px 24px; }
+    /* RESPONSIVE */
+    @media(max-width:860px){
+      nav { padding:0 20px; }
+      .nav-links, .nav-btn { display:none; }
+      .hero { grid-template-columns:1fr; }
+      .hero-left { padding:80px 24px 48px; }
+      .hero-right { min-height:340px; }
+      .section { padding:60px 24px; }
+      .histoire-body-wrap { max-width:100%; }
+      .coll-header { flex-direction:column; gap:16px; }
+      .grid-6 { grid-template-columns:1fr; }
+      .fmt-grid { grid-template-columns:1fr; }
+      .trouver-inner { grid-template-columns:1fr; gap:36px; }
+      .contact-inner { grid-template-columns:1fr; gap:36px; }
+      .form-row { grid-template-columns:1fr; }
+      footer { padding:36px 24px 22px; }
+      .ft-top { flex-direction:column; }
+      .ft-links { flex-direction:column; gap:24px; }
+      .ft-bot { flex-direction:column; text-align:center; }
     }
   </style>
 </head>
@@ -544,190 +229,145 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <div class="nav-logo-img">🧁</div>
-    <div class="nav-logo-text">Mad'moiselle <span>by Naya Délice</span></div>
-  </div>
+  <div class="logo">Mad'moiselle <em>by Naya Délice</em></div>
   <ul class="nav-links">
     <li><a href="#histoire">L'histoire</a></li>
     <li><a href="#collection">La collection</a></li>
-    <li><a href="#formats">Formats & tarifs</a></li>
+    <li><a href="#formats">Tarifs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a class="nav-cta" href="#contact">Commander</a>
+  <a class="nav-btn" href="#contact">Commander</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-kicker">Pâtisserie artisanale · Grenoble</div>
-    <h1 class="hero-title">Un voyage</h1>
-    <span class="hero-title-italic">gourmand.</span>
-    <p class="hero-desc">Six destinations. Six madeleines artisanales. Des ingrédients soigneusement choisis pour faire voyager vos papilles et réveiller des souvenirs d'enfance.</p>
-    <div class="hero-actions">
-      <button class="btn-primary" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">Découvrir la collection</button>
-      <a class="btn-secondary" href="#contact"><span>→</span> Nous contacter</a>
+    <div class="hero-eyebrow">Pâtisserie artisanale · Grenoble</div>
+    <h1 class="hero-h1">Un voyage<em>gourmand.</em></h1>
+    <p class="hero-sub">Madeleines artisanales du monde</p>
+    <div class="hero-btns">
+      <a class="btn-gold" href="#collection">Découvrir la collection</a>
+      <a class="btn-outline" href="#contact">Nous contacter</a>
     </div>
-    <div class="hero-scroll">Défiler</div>
   </div>
   <div class="hero-right">
-    <div class="hero-img-wrap">
-      <img src="hero-bannière.jpg.jpg" alt="Madeleines artisanales Mad'moiselle" style="width:100%;height:100%;object-fit:cover;display:block;">
-      <div class="hero-tag">Tour<br>du<br>Monde</div>
-    </div>
+    <img class="hero-bg" src="banner.jpg.webp" alt="Madeleines artisanales Mad'moiselle by Naya Délice"/>
   </div>
 </section>
 
-<!-- STRIP ANIMÉ -->
+<!-- STRIP -->
 <div class="strip">
-  <div class="strip-inner">
-    <span class="strip-item">Italie · Amarena & Chocolat</span><span class="strip-dot"></span>
-    <span class="strip-item">Japon · Matcha & Sésame Noir</span><span class="strip-dot"></span>
-    <span class="strip-item">Sénégal · Mangue Coco Ananas Gingembre</span><span class="strip-dot"></span>
-    <span class="strip-item">Liban · Rose & Pistache</span><span class="strip-dot"></span>
-    <span class="strip-item">Algérie · Datte & Cannelle</span><span class="strip-dot"></span>
-    <span class="strip-item">Brésil · Coco & Citron Vert</span><span class="strip-dot"></span>
-    <span class="strip-item">Italie · Amarena & Chocolat</span><span class="strip-dot"></span>
-    <span class="strip-item">Japon · Matcha & Sésame Noir</span><span class="strip-dot"></span>
-    <span class="strip-item">Sénégal · Mangue Coco Ananas Gingembre</span><span class="strip-dot"></span>
-    <span class="strip-item">Liban · Rose & Pistache</span><span class="strip-dot"></span>
-    <span class="strip-item">Algérie · Datte & Cannelle</span><span class="strip-dot"></span>
-    <span class="strip-item">Brésil · Coco & Citron Vert</span><span class="strip-dot"></span>
+  <div class="strip-track">
+    <span class="strip-item">Italie · Amarena & Chocolat</span><span class="strip-sep"></span>
+    <span class="strip-item">Japon · Matcha & Sésame Noir</span><span class="strip-sep"></span>
+    <span class="strip-item">Sénégal · Mangue Coco Ananas Gingembre</span><span class="strip-sep"></span>
+    <span class="strip-item">Liban · Rose & Pistache</span><span class="strip-sep"></span>
+    <span class="strip-item">Algérie · Datte & Cannelle</span><span class="strip-sep"></span>
+    <span class="strip-item">Brésil · Coco & Citron Vert</span><span class="strip-sep"></span>
+    <span class="strip-item">Italie · Amarena & Chocolat</span><span class="strip-sep"></span>
+    <span class="strip-item">Japon · Matcha & Sésame Noir</span><span class="strip-sep"></span>
+    <span class="strip-item">Sénégal · Mangue Coco Ananas Gingembre</span><span class="strip-sep"></span>
+    <span class="strip-item">Liban · Rose & Pistache</span><span class="strip-sep"></span>
+    <span class="strip-item">Algérie · Datte & Cannelle</span><span class="strip-sep"></span>
+    <span class="strip-item">Brésil · Coco & Citron Vert</span><span class="strip-sep"></span>
   </div>
 </div>
 
 <!-- HISTOIRE -->
 <section class="histoire section" id="histoire">
-  <div class="section-label">Notre histoire</div>
-  <div class="histoire-grid">
-    <div>
-      <blockquote class="histoire-quote reveal">
-        « La pâtisserie est bien plus qu'un plaisir sucré.<br>C'est un souvenir. Une émotion.<br>Un moment suspendu dans le temps. »
-      </blockquote>
-      <p class="histoire-body reveal">
-        Née d'une passion profonde pour les douceurs de l'enfance, Mad'moiselle réinvente la madeleine iconique à travers des inspirations venues des quatre coins du monde. Chaque création est une escale : savoir-faire artisanal et ingrédients soigneusement choisis se rencontrent dans un format intemporel.
-      </p>
-      <div class="valeurs reveal">
-        <div class="valeur">
-          <div class="valeur-num">01</div>
-          <div class="valeur-content">
-            <div class="valeur-title">Passion</div>
-            <div class="valeur-desc">L'amour de la pâtisserie guide chaque création</div>
-          </div>
-        </div>
-        <div class="valeur">
-          <div class="valeur-num">02</div>
-          <div class="valeur-content">
-            <div class="valeur-title">Artisanat</div>
-            <div class="valeur-desc">Préparé avec soin, dans le respect du métier</div>
-          </div>
-        </div>
-        <div class="valeur">
-          <div class="valeur-num">03</div>
-          <div class="valeur-content">
-            <div class="valeur-title">Qualité</div>
-            <div class="valeur-desc">Des ingrédients sélectionnés pour leur authenticité</div>
-          </div>
-        </div>
-        <div class="valeur">
-          <div class="valeur-num">04</div>
-          <div class="valeur-content">
-            <div class="valeur-title">Voyage</div>
-            <div class="valeur-desc">Chaque saveur, une invitation à la découverte</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="histoire-visual reveal">
-      <img src="photo-atelier.jpg" alt="Atelier Mad'moiselle by Naya Délice" style="width:100%;height:100%;object-fit:cover;display:block;">
+  <div class="s-eye">Notre histoire</div>
+  <h2 class="s-title">Née d'une passion,<br>guidée par <em>l'élégance</em></h2>
+  <div class="histoire-body-wrap">
+    <blockquote class="h-quote">
+      « Autodidacte et passionnée, j'ai voulu créer une madeleine qui voyage — comme moi. »
+    </blockquote>
+    <p class="h-body">Je m'appelle Séléna. Originaire de Toulouse, j'ai passé 20 ans au Sénégal — mon pays de cœur — avant de poser mes valises à Grenoble. C'est ici, dans ce nouveau chapitre de ma vie, qu'est née <strong>Mad'moiselle by Naya Délice</strong>.</p>
+    <p class="h-body" style="margin-top:-8px;">Pâtissière autodidacte, j'ai toujours été guidée par une seule boussole : la passion. Le nom <em>Naya Délice</em> a été choisi pour ce qu'il incarne — l'élégance, la douceur, et une certaine idée du raffinement artisanal.</p>
+    <p class="h-body" style="margin-top:-8px;">Les six destinations de ma collection ne sont pas un hasard. L'Italie, le Japon, le Sénégal, le Liban, l'Algérie, le Brésil — ce sont des pays qui m'évoquent des saveurs ensoleillées, des souvenirs gustatifs, des instants de bonheur simple. Chaque madeleine est une façon de voyager, une bouchée à la fois.</p>
+    <div class="valeurs">
+      <div class="valeur"><div class="v-num">01</div><div><div class="v-title">Autodidacte & passionnée</div><div class="v-desc">Chaque recette est le fruit d'un apprentissage personnel et d'un amour sincère pour la pâtisserie</div></div></div>
+      <div class="valeur"><div class="v-num">02</div><div><div class="v-title">Élégance artisanale</div><div class="v-desc">Mad'moiselle by Naya Délice, c'est le choix de l'élégance dans chaque création</div></div></div>
+      <div class="valeur"><div class="v-num">03</div><div><div class="v-title">Toulouse · Dakar · Grenoble</div><div class="v-desc">Un parcours de vie riche qui nourrit chaque saveur et chaque inspiration</div></div></div>
+      <div class="valeur"><div class="v-num">04</div><div><div class="v-title">Saveurs ensoleillées</div><div class="v-desc">Six pays choisis pour les émotions qu'ils évoquent — chaleur, lumière et générosité</div></div></div>
     </div>
   </div>
 </section>
 
 <!-- COLLECTION -->
 <section class="collection section" id="collection">
-  <div class="collection-top">
+  <div class="coll-header">
     <div>
-      <div class="section-label">Collection signature</div>
-      <h2 class="section-h">Le Tour du <em>Monde</em></h2>
+      <div class="s-eye">Collection signature</div>
+      <h2 class="s-title">Le Tour du <em>Monde</em></h2>
     </div>
-    <p class="collection-intro">Six destinations, six rencontres entre la pâtisserie française et les saveurs du monde. Même format iconique, identités gustatives uniques.</p>
+    <p class="coll-intro">Six destinations, six rencontres entre la pâtisserie française et les saveurs du monde.</p>
   </div>
 
-  <div class="destinations">
+  <div class="grid-6">
 
-    <div class="dest reveal">
-      <div class="dest-top-bar" style="background:#009246"></div>
-      <img src="madeleine-italie.jpg.png" alt="Madeleine Amarena Italie" style="width:100%;height:120px;object-fit:cover;display:block;">
-      <div class="dest-country">Italie · Sicile</div>
-      <div class="dest-name">Madeleine <em>Amarena</em></div>
-      <p class="dest-desc">Cerise amarena confite et éclats de chocolat noir fondant — la dolce vita en une bouchée.</p>
-      <div class="dest-tags">
-        <span class="dest-tag">Amarena confite</span>
-        <span class="dest-tag">Éclats chocolat noir</span>
+    <div class="card">
+      <div class="card-bar" style="background:#009246"></div>
+      <img class="card-img" src="italie.jpg.png" alt="Madeleine Amarena Italie"/>
+      <div class="card-body">
+        <div class="card-country"><img src="https://flagcdn.com/32x24/it.png" alt="Italie" style="vertical-align:middle;margin-right:8px;border-radius:2px;">Italie · Sicile</div>
+        <div class="card-name">Madeleine <em>Amarena</em></div>
+        <p class="card-desc">Cerise amarena confite et éclats de chocolat noir fondant — la dolce vita en une bouchée.</p>
+        <div class="card-tags"><span class="tag">Amarena confite</span><span class="tag">Éclats chocolat noir</span></div>
       </div>
     </div>
 
-    <div class="dest reveal">
-      <div class="dest-top-bar" style="background:#BC002D"></div>
-      <img src="madeleine-japon.jpg.png" alt="Madeleine Matcha Japon" style="width:100%;height:120px;object-fit:cover;display:block;">
-      <div class="dest-country">Japon</div>
-      <div class="dest-name">Madeleine <em>Matcha</em></div>
-      <p class="dest-desc">Matcha cérémonial intense et sésame noir toasté — zen et raffinement en harmonie.</p>
-      <div class="dest-tags">
-        <span class="dest-tag">Matcha cérémonial</span>
-        <span class="dest-tag">Sésame noir</span>
+    <div class="card">
+      <div class="card-bar" style="background:#BC002D"></div>
+      <img class="card-img" src="japon.jpg.png" alt="Madeleine Matcha Japon"/>
+      <div class="card-body">
+        <div class="card-country"><img src="https://flagcdn.com/32x24/jp.png" alt="Japon" style="vertical-align:middle;margin-right:8px;border-radius:2px;">Japon</div>
+        <div class="card-name">Madeleine <em>Matcha</em></div>
+        <p class="card-desc">Matcha cérémonial intense et sésame noir toasté — zen et raffinement en harmonie.</p>
+        <div class="card-tags"><span class="tag">Matcha cérémonial</span><span class="tag">Sésame noir</span></div>
       </div>
     </div>
 
-    <div class="dest reveal">
-      <div class="dest-top-bar" style="background:#00853F"></div>
-      <img src="madeleine-sénégal.jpg.png" alt="Madeleine Tropicale Sénégal" style="width:100%;height:120px;object-fit:cover;display:block;">
-      <div class="dest-country">Sénégal</div>
-      <div class="dest-name">Madeleine <em>Tropicale</em></div>
-      <p class="dest-desc">Mangue, coco, ananas et gingembre confit — un soleil tropical en une seule bouchée.</p>
-      <div class="dest-tags">
-        <span class="dest-tag">Mangue</span>
-        <span class="dest-tag">Coco</span>
-        <span class="dest-tag">Ananas</span>
-        <span class="dest-tag">Gingembre confit</span>
+    <div class="card">
+      <div class="card-bar" style="background:#00853F"></div>
+      <img class="card-img" src="west-africa.jpg.png" alt="Madeleine Tropicale Sénégal"/>
+      <div class="card-body">
+        <div class="card-country"><img src="https://flagcdn.com/32x24/sn.png" alt="Sénégal" style="vertical-align:middle;margin-right:8px;border-radius:2px;">Sénégal</div>
+        <div class="card-name">Madeleine <em>Tropicale</em></div>
+        <p class="card-desc">Mangue, coco, ananas et gingembre confit — un soleil tropical en une seule bouchée.</p>
+        <div class="card-tags"><span class="tag">Mangue</span><span class="tag">Coco</span><span class="tag">Ananas</span><span class="tag">Gingembre confit</span></div>
       </div>
     </div>
 
-    <div class="dest reveal">
-      <div class="dest-top-bar" style="background:#5B4A8A"></div>
-      <img src="madeleine-liban.jpg.png" alt="Madeleine Rose Pistache Liban" style="width:100%;height:120px;object-fit:cover;display:block;">
-      <div class="dest-country">Liban</div>
-      <div class="dest-name">Madeleine <em>Rose & Pistache</em></div>
-      <p class="dest-desc">Eau de rose délicate, pétales de rose et éclats de pistache — élégance levantine.</p>
-      <div class="dest-tags">
-        <span class="dest-tag">Eau de rose</span>
-        <span class="dest-tag">Pétales de rose</span>
-        <span class="dest-tag">Éclats pistache</span>
+    <div class="card">
+      <div class="card-bar" style="background:#5B4A8A"></div>
+      <img class="card-img" src="liban.jpg.png" alt="Madeleine Rose Pistache Liban"/>
+      <div class="card-body">
+        <div class="card-country"><img src="https://flagcdn.com/32x24/lb.png" alt="Liban" style="vertical-align:middle;margin-right:8px;border-radius:2px;">Liban</div>
+        <div class="card-name">Madeleine <em>Rose & Pistache</em></div>
+        <p class="card-desc">Eau de rose délicate, pétales de rose et éclats de pistache — élégance levantine.</p>
+        <div class="card-tags"><span class="tag">Eau de rose</span><span class="tag">Pétales de rose</span><span class="tag">Éclats pistache</span></div>
       </div>
     </div>
 
-    <div class="dest reveal">
-      <div class="dest-top-bar" style="background:#C9A96E"></div>
-      <img src="madeleine-algérie.jpg.png" alt="Madeleine Datte Cannelle Algérie" style="width:100%;height:120px;object-fit:cover;display:block;">
-      <div class="dest-country">Algérie</div>
-      <div class="dest-name">Madeleine <em>Datte & Cannelle</em></div>
-      <p class="dest-desc">Datte fondante et cannelle dorée — chaleur du Maghreb et douceur authentique.</p>
-      <div class="dest-tags">
-        <span class="dest-tag">Datte</span>
-        <span class="dest-tag">Cannelle</span>
+    <div class="card">
+      <div class="card-bar" style="background:#C9A96E"></div>
+      <img class="card-img" src="algerie.jpg.png" alt="Madeleine Datte Cannelle Algérie"/>
+      <div class="card-body">
+        <div class="card-country"><img src="https://flagcdn.com/32x24/dz.png" alt="Algérie" style="vertical-align:middle;margin-right:8px;border-radius:2px;">Algérie</div>
+        <div class="card-name">Madeleine <em>Datte & Cannelle</em></div>
+        <p class="card-desc">Datte fondante et cannelle dorée — chaleur du Maghreb et douceur authentique.</p>
+        <div class="card-tags"><span class="tag">Datte</span><span class="tag">Cannelle</span></div>
       </div>
     </div>
 
-    <div class="dest reveal">
-      <div class="dest-top-bar" style="background:#009C3B"></div>
-      <img src="madeleine-brésil.jpg.png" alt="Madeleine Coco Citron Vert Brésil" style="width:100%;height:120px;object-fit:cover;display:block;">
-      <div class="dest-country">Brésil</div>
-      <div class="dest-name">Madeleine <em>Coco Citron Vert</em></div>
-      <p class="dest-desc">Noix de coco râpée et zeste de citron vert — fraîcheur tropicale, éclat brésilien.</p>
-      <div class="dest-tags">
-        <span class="dest-tag">Coco râpée</span>
-        <span class="dest-tag">Citron vert</span>
+    <div class="card">
+      <div class="card-bar" style="background:#009C3B"></div>
+      <img class="card-img" src="brazil.jpg.png" alt="Madeleine Coco Citron Vert Brésil"/>
+      <div class="card-body">
+        <div class="card-country"><img src="https://flagcdn.com/32x24/br.png" alt="Brésil" style="vertical-align:middle;margin-right:8px;border-radius:2px;">Brésil</div>
+        <div class="card-name">Madeleine <em>Coco Citron Vert</em></div>
+        <p class="card-desc">Noix de coco râpée et zeste de citron vert — fraîcheur tropicale, éclat brésilien.</p>
+        <div class="card-tags"><span class="tag">Coco râpée</span><span class="tag">Citron vert</span></div>
       </div>
     </div>
 
@@ -736,202 +376,144 @@
 
 <!-- FORMATS -->
 <section class="formats section" id="formats">
-  <div class="section-label">Nos formats</div>
-  <h2 class="section-h">Pour chaque <em>occasion</em></h2>
-  <div class="formats-grid">
+  <div class="s-eye">Nos formats</div>
+  <h2 class="s-title">Pour chaque <em>occasion</em></h2>
+  <div class="fmt-grid">
 
-    <div class="format reveal">
-      <span class="format-icon">🫙</span>
-      <div class="format-label">À l'unité</div>
-      <div class="format-name">La Pièce</div>
-      <p class="format-desc">Une destination, une dégustation. Idéal pour tester toutes les escales et trouver votre favorite.</p>
-      <div class="format-price">4,90 <sub>€ / pièce</sub></div>
+    <div class="fmt">
+      <span class="fmt-icon">🫙</span>
+      <div class="fmt-lbl">À l'unité</div>
+      <div class="fmt-name">La Pièce</div>
+      <p class="fmt-desc">Une destination, une dégustation. Idéal pour tester toutes les escales.</p>
+      <div class="fmt-price-big">4,90 <sub>€ / pièce</sub></div>
     </div>
 
-    <div class="format star reveal">
-      <div class="format-badge">Incontournable</div>
-      <span class="format-icon">🎁</span>
-      <div class="format-label">Coffret voyage</div>
-      <div class="format-name">Le Coffret</div>
-      <p class="format-desc">Un tour du monde en boîte — pour offrir ou s'offrir. Coffret 3 madeleines ou coffret 6 madeleines.</p>
-      <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(255,255,255,0.08);">
-          <span style="font-size:12px;letter-spacing:0.05em;color:rgba(255,255,255,0.6)">Coffret 3 madeleines</span>
-          <span style="font-family:'Libre Baskerville',serif;font-size:20px;color:var(--or)">13,80 <span style="font-size:12px;font-weight:300">€</span></span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(255,255,255,0.08);">
-          <span style="font-size:12px;letter-spacing:0.05em;color:rgba(255,255,255,0.6)">Coffret 6 madeleines</span>
-          <span style="font-family:'Libre Baskerville',serif;font-size:20px;color:var(--or)">26,40 <span style="font-size:12px;font-weight:300">€</span></span>
-        </div>
+    <div class="fmt star">
+      <div class="fmt-badge">Incontournable</div>
+      <span class="fmt-icon">🎁</span>
+      <div class="fmt-lbl">Coffret voyage</div>
+      <div class="fmt-name">Le Coffret</div>
+      <p class="fmt-desc">Un tour du monde en boîte — pour offrir ou s'offrir.</p>
+      <div class="fmt-rows">
+        <div class="fmt-row"><span class="fmt-row-lbl">Coffret 3 madeleines</span><span class="fmt-row-val">13,80 €</span></div>
+        <div class="fmt-row"><span class="fmt-row-lbl">Coffret 6 madeleines</span><span class="fmt-row-val">26,40 €</span></div>
       </div>
     </div>
 
-    <div class="format reveal">
-      <span class="format-icon">🏪</span>
-      <div class="format-label">Professionnel</div>
-      <div class="format-name">B2B & Événements</div>
-      <p class="format-desc">Coffee shops, salons de thé, pop-ups, mariages. Commandes personnalisées sur devis.</p>
-      <div class="format-price" style="font-family:'DM Sans';font-size:18px;letter-spacing:0.04em;color:var(--mid)">Sur devis</div>
+    <div class="fmt">
+      <span class="fmt-icon">🏪</span>
+      <div class="fmt-lbl">Professionnel</div>
+      <div class="fmt-name">B2B & Événements</div>
+      <p class="fmt-desc">Coffee shops, salons de thé, pop-ups, mariages. Commandes personnalisées.</p>
+      <div class="fmt-devis">Sur devis</div>
     </div>
 
   </div>
 </section>
 
 <!-- TROUVER -->
-<section class="trouver reveal" id="trouver">
+<section class="section trouver" id="trouver">
   <div>
-    <div class="section-label">Nous trouver</div>
+    <div class="s-eye">Nous trouver</div>
     <h2 class="trouver-title">Au marché,<br>chaque <em>semaine</em></h2>
-    <p class="trouver-desc">Venez nous retrouver au marché de Meylan, en région grenobloise. C'est là que tout a commencé — un stand, des madeleines, et l'envie de partager.</p>
-    <div class="trouver-items">
-      <div class="trouver-item">
-        <span class="trouver-item-icon">📍</span>
-        <div>
-          <div class="trouver-item-title">Marché de Meylan</div>
-          <div class="trouver-item-sub">Agglomération grenobloise, Isère</div>
-        </div>
-      </div>
-      <div class="trouver-item">
-        <span class="trouver-item-icon">📸</span>
-        <div>
-          <div class="trouver-item-title">@madmoiselle2026</div>
-          <div class="trouver-item-sub">Actualités et coulisses sur Instagram</div>
-        </div>
-      </div>
+    <p class="trouver-body">Venez nous retrouver au marché des Ayguinards à Meylan. Un stand, des madeleines, et l'envie de partager.</p>
+    <div class="t-items">
+      <div class="t-item"><span class="t-icon">📍</span><div><div class="t-title">Marché des Ayguinards — Meylan</div><div class="t-sub">38240 Meylan, Isère</div></div></div>
+      <div class="t-item"><span class="t-icon">🕗</span><div><div class="t-title">Mercredi · Samedi · Dimanche</div><div class="t-sub">8h00 – 12h30</div></div></div>
+      <div class="t-item"><span class="t-icon">📸</span><div><div class="t-title">@madmoiselle2026</div><div class="t-sub">Suivez-nous sur Instagram</div></div></div>
     </div>
   </div>
-  <div class="reveal" style="display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(201,169,110,0.2);">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2811.3!2d5.7635513!3d45.208853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478af5aabf82804f%3A0x8f6a3b7bd94f1952!2sMarch%C3%A9%20des%20Ayguinards!5e0!3m2!1sfr!2sfr!4v1713000000000"
-      width="100%" height="300"
-      style="border:0;display:block;flex-shrink:0;"
-      allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="Marché des Ayguinards, Meylan">
-    </iframe>
-    <div style="background:white;padding:20px 24px;display:flex;flex-direction:column;gap:4px;">
-      <div style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--or-deep)">Marché des Ayguinards</div>
-      <div style="font-size:15px;font-weight:500;color:var(--dark)">38240 Meylan</div>
-      <div style="font-size:12px;color:var(--light);margin-top:2px">Mar · Jeu · Ven · Sam · Dim &nbsp;·&nbsp; 8h – 12h30</div>
+  <div class="trouver-inner" style="display:block;margin-top:0;">
+    <div class="map-block">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2811.3!2d5.7635513!3d45.208853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478af5aabf82804f%3A0x8f6a3b7bd94f1952!2sMarch%C3%A9%20des%20Ayguinards!5e0!3m2!1sfr!2sfr!4v1713000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Marché des Ayguinards Meylan"></iframe>
+      <div class="map-caption">
+        <div class="map-cap-title">Marché des Ayguinards</div>
+        <div class="map-cap-addr">38240 Meylan</div>
+        <div class="map-cap-hours">Mercredi · Samedi · Dimanche — 8h00 à 12h30</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="contact section" id="contact">
-  <div class="section-label">Nous contacter</div>
-  <h2 class="section-h">Parlons <em>gourmandise</em></h2>
-  <div class="contact-grid">
-
-    <div class="contact-left reveal">
-      <p class="contact-body">Une commande, une collaboration B2B, un événement à organiser ? Mad'moiselle est à votre écoute. Réponse sous 48h.</p>
-      <div class="contact-infos">
-        <div class="contact-info-item">
-          <span class="contact-info-label">Instagram</span>
-          <span class="contact-info-val">@madmoiselle2026</span>
-        </div>
-        <div class="contact-info-item">
-          <span class="contact-info-label">Localisation</span>
-          <span class="contact-info-val">Grenoble & région, Isère</span>
-        </div>
-        <div class="contact-info-item">
-          <span class="contact-info-label">SIREN</span>
-          <span class="contact-info-val">995 085 263</span>
-        </div>
+  <div class="s-eye">Nous contacter</div>
+  <h2 class="s-title">Parlons <em>gourmandise</em></h2>
+  <div class="contact-inner">
+    <div>
+      <p class="c-body">Une commande, une collaboration B2B, un événement ? Mad'moiselle est à votre écoute. Réponse sous 48h.</p>
+      <div class="c-infos">
+        <div class="ci"><div class="ci-lbl">Instagram</div><div class="ci-val">@madmoiselle2026</div></div>
+        <div class="ci"><div class="ci-lbl">Localisation</div><div class="ci-val">Grenoble & région, Isère</div></div>
+        <div class="ci"><div class="ci-lbl">SIREN</div><div class="ci-val">995 085 263</div></div>
       </div>
     </div>
-
-    <div class="reveal">
+    <div>
       <form class="form" id="contactForm" onsubmit="handleSubmit(event)">
         <div class="form-row">
-          <div class="field">
-            <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" name="prenom" placeholder="Marie" required />
-          </div>
-          <div class="field">
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" placeholder="Dupont" required />
-          </div>
+          <div class="field"><label for="prenom">Prénom</label><input type="text" id="prenom" name="prenom" placeholder="Marie" required/></div>
+          <div class="field"><label for="nom">Nom</label><input type="text" id="nom" name="nom" placeholder="Dupont" required/></div>
         </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="marie@email.com" required />
-        </div>
+        <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="marie@email.com" required/></div>
         <div class="field">
           <label for="sujet">Sujet</label>
           <select id="sujet" name="sujet" required>
             <option value="" disabled selected>Choisir un sujet</option>
             <option value="commande">Commande particulière</option>
             <option value="coffret">Commande coffret</option>
-            <option value="b2b">Partenariat B2B / professionnel</option>
+            <option value="b2b">Partenariat B2B</option>
             <option value="evenement">Événement / mariage</option>
             <option value="autre">Autre</option>
           </select>
         </div>
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Dites-nous tout…" required></textarea>
-        </div>
+        <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Dites-nous tout…" required></textarea></div>
         <p class="form-note">Vos données sont utilisées uniquement pour répondre à votre demande.</p>
-        <button type="submit" class="form-submit">Envoyer le message →</button>
+        <button type="submit" class="form-btn">Envoyer →</button>
       </form>
-      <div class="form-success" id="formSuccess">
-        ✓ &nbsp; Merci pour votre message ! Nous vous répondrons dans les 48h. En attendant, retrouvez-nous sur <strong>@madmoiselle2026</strong>.
-      </div>
+      <div class="form-ok" id="formOk">✓ &nbsp;Merci ! Nous vous répondrons sous 48h. Retrouvez-nous sur <strong>@madmoiselle2026</strong>.</div>
     </div>
-
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="footer-logo">Mad'moiselle by Naya Délice</div>
-      <div class="footer-tagline">Un voyage gourmand qui réveille l'enfance.</div>
+  <div class="ft-top">
+    <div>
+      <div class="ft-logo">Mad'moiselle by Naya Délice</div>
+      <div class="ft-tag">Un voyage gourmand qui réveille l'enfance.</div>
     </div>
-    <div class="footer-links">
-      <div class="footer-col">
-        <div class="footer-col-title">Navigation</div>
+    <div class="ft-links">
+      <div class="fcol">
+        <div class="fcol-t">Navigation</div>
         <ul>
           <li><a href="#histoire">L'histoire</a></li>
           <li><a href="#collection">La collection</a></li>
-          <li><a href="#formats">Formats & tarifs</a></li>
+          <li><a href="#formats">Tarifs</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Nous retrouver</div>
+      <div class="fcol">
+        <div class="fcol-t">Nous retrouver</div>
         <ul>
-          <li><a href="#">Marché de Meylan</a></li>
+          <li><a href="#">Marché des Ayguinards, Meylan</a></li>
           <li><a href="https://instagram.com/madmoiselle2026" target="_blank" rel="noopener">@madmoiselle2026</a></li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2025 Mad'moiselle by Naya Délice · Grenoble, Isère</div>
-    <div class="footer-siren">SIREN 995 085 263 · Artisan pâtissier</div>
+  <div class="ft-bot">
+    <div class="ft-copy">© 2025 Mad'moiselle by Naya Délice · Grenoble, Isère</div>
+    <div class="ft-siren">SIREN 995 085 263 · Artisan pâtissier</div>
   </div>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('revealed'), i * 100);
-      }
-    });
-  }, { threshold: 0.07 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
   function handleSubmit(e) {
     e.preventDefault();
     document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
+    document.getElementById('formOk').style.display = 'block';
   }
 </script>
 
 </body>
 </html>
-
