@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mad'moiselle by Naya Délice — Madeleines artisanales Tour du Monde</title>
+  <meta name="description" content="Madeleines artisanales inspirées des saveurs du monde. Six destinations, six recettes uniques. Fait à Grenoble avec passion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --creme: #FFF8F0;
+      --creme-deep: #F5F0EB;
+      --or: #C9A96E;
+      --or-deep: #A0783C;
+      --rose: #FFAAC8;
+      --rose-pale: #FCE4EC;
+      --aubergine: #5B4A8A;
+      --sauge: #4A7C59;
+      --bleu: #1A6B8A;
+      --dark: #1A1A1A;
+      --mid: #444444;
+      --light-text: #888888;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--creme);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 18px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,248,240,0.93);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,169,110,0.25);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      color: var(--or-deep);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    .nav-logo span { font-style: italic; color: var(--aubergine); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--mid); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--or-deep); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: 72px;
+      position: relative; overflow: hidden;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 56px 80px 64px;
+      position: relative; z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--or-deep); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 32px; height: 1px; background: var(--or);
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(44px, 5vw, 72px);
+      line-height: 1.05;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .hero-title em { font-style: italic; color: var(--aubergine); }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 300; font-style: italic;
+      color: var(--or-deep); margin-bottom: 36px; margin-top: 4px;
+    }
+    .hero-desc {
+      font-size: 15px; line-height: 1.85; color: var(--mid);
+      max-width: 400px; margin-bottom: 48px;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--or-deep); color: var(--creme);
+      padding: 14px 32px;
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      cursor: pointer; border: none;
+      transition: background 0.25s, transform 0.2s;
+      font-family: 'Jost', sans-serif;
+    }
+    .hero-cta:hover { background: var(--aubergine); transform: translateY(-2px); }
+    .hero-dots {
+      display: flex; gap: 8px; margin-bottom: 32px;
+    }
+    .hero-dots span {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--or); display: block;
+    }
+    .hero-dots span:first-child { background: var(--aubergine); width: 24px; border-radius: 4px; }
+
+    .hero-right {
+      background: var(--creme-deep);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-visual {
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, var(--rose-pale), var(--creme) 60%, rgba(201,169,110,0.1));
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .orbit-ring {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(201,169,110,0.18);
+      pointer-events: none;
+    }
+    .hero-badge {
+      position: absolute; top: -16px; right: -16px;
+      width: 96px; height: 96px; border-radius: 50%;
+      background: var(--aubergine);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: white;
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 11px; line-height: 1.5; text-align: center; padding: 8px;
+    }
+    .hero-icon { font-size: 100px; line-height: 1; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 96px 64px; }
+    .section-tag {
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--or-deep); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-tag::before {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--or);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 3.5vw, 50px);
+      line-height: 1.1; margin-bottom: 20px;
+    }
+    .section-title em { font-style: italic; color: var(--aubergine); }
+
+    /* ── HISTOIRE ── */
+    .histoire {
+      background: var(--dark);
+      color: var(--creme);
+      display: grid; grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+    .histoire-left {
+      padding: 96px 64px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .histoire-left .section-tag { color: var(--or); }
+    .histoire-left .section-tag::before { background: var(--or); }
+    .histoire-left .section-title { color: var(--creme); }
+    .histoire-left .section-title em { color: var(--rose); }
+    .histoire-text {
+      font-size: 15px; line-height: 1.9; color: rgba(255,248,240,0.72);
+      margin-bottom: 40px;
+    }
+    .valeurs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .valeur-item { border-left: 2px solid var(--or); padding-left: 16px; }
+    .valeur-title {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--or); margin-bottom: 4px;
+    }
+    .valeur-desc { font-size: 12px; line-height: 1.7; color: rgba(255,248,240,0.55); }
+
+    .histoire-right {
+      background: var(--aubergine);
+      display: flex; align-items: center; justify-content: center;
+      padding: 64px;
+      position: relative; overflow: hidden;
+    }
+    .histoire-right::before {
+      content: ''; position: absolute;
+      width: 500px; height: 500px; border-radius: 50%;
+      border: 1px solid rgba(255,170,200,0.12);
+      top: -100px; right: -100px;
+    }
+    .manifeste-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,170,200,0.28);
+      padding: 48px 40px;
+      max-width: 360px;
+      position: relative; z-index: 1;
+    }
+    .manifeste-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 23px; font-style: italic; font-weight: 300;
+      color: var(--creme); line-height: 1.65;
+      margin-bottom: 24px;
+    }
+    .manifeste-quote strong { color: var(--rose); font-weight: 400; }
+    .manifeste-sig {
+      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,248,240,0.45);
+    }
+
+    /* ── COLLECTION ── */
+    .collection { background: var(--creme); }
+    .collection-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 56px; gap: 48px;
+    }
+    .collection-intro {
+      font-size: 15px; line-height: 1.85; color: var(--mid);
+      max-width: 460px;
+    }
+    .destinations-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .destination-card {
+      background: white;
+      border: 1px solid rgba(201,169,110,0.2);
+      overflow: hidden;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+    .destination-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 52px rgba(90,74,138,0.13);
+    }
+    .card-header {
+      padding: 32px 28px 24px;
+      position: relative;
+    }
+    .card-accent {
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    }
+    .card-flag { font-size: 34px; margin-bottom: 14px; display: block; }
+    .card-destination {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--light-text); margin-bottom: 6px;
+    }
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; line-height: 1.2; color: var(--dark);
+    }
+    .card-name em { font-style: italic; color: var(--aubergine); }
+    .card-body {
+      padding: 20px 28px 28px;
+      border-top: 1px solid rgba(201,169,110,0.15);
+    }
+    .card-flavor {
+      font-size: 13px; color: var(--mid); margin-bottom: 10px;
+      line-height: 1.7;
+    }
+    .card-inclusions {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .inclusion-tag {
+      font-size: 10px; letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border: 1px solid rgba(201,169,110,0.3);
+      color: var(--or-deep);
+      background: rgba(201,169,110,0.07);
+    }
+
+    /* ── FORMATS ── */
+    .formats { background: var(--creme-deep); }
+    .formats-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+      margin-top: 48px;
+    }
+    .format-card {
+      padding: 40px 32px;
+      background: white;
+      border: 1px solid rgba(201,169,110,0.2);
+      text-align: center;
+      position: relative; overflow: hidden;
+      transition: transform 0.22s;
+    }
+    .format-card:hover { transform: translateY(-5px); }
+    .format-card.featured {
+      background: var(--aubergine);
+      color: var(--creme);
+      border-color: var(--aubergine);
+    }
+    .format-icon { font-size: 40px; margin-bottom: 20px; display: block; }
+    .format-label {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--or-deep); margin-bottom: 8px;
+    }
+    .format-card.featured .format-label { color: var(--rose); }
+    .format-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; margin-bottom: 12px;
+    }
+    .format-desc {
+      font-size: 13px; line-height: 1.8; color: var(--mid); margin-bottom: 24px;
+    }
+    .format-card.featured .format-desc { color: rgba(255,248,240,0.7); }
+    .format-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; color: var(--or-deep);
+    }
+    .format-card.featured .format-price { color: var(--or); }
+    .format-price span { font-size: 14px; font-weight: 300; }
+    .format-badge {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--rose); color: var(--dark);
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 10px;
+    }
+
+    /* ── MARCHÉS ── */
+    .marches {
+      background: white;
+      padding: 80px 64px;
+      border-top: 1px solid rgba(201,169,110,0.2);
+      border-bottom: 1px solid rgba(201,169,110,0.2);
+    }
+    .marches-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 64px;
+    }
+    .marches-text { max-width: 460px; }
+    .marches-text .section-tag { margin-bottom: 12px; }
+    .marches-text p {
+      font-size: 15px; line-height: 1.85; color: var(--mid); margin-top: 16px;
+    }
+    .marches-info {
+      display: flex; flex-direction: column; gap: 16px;
+      min-width: 280px;
+    }
+    .marche-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 20px 24px;
+      border: 1px solid rgba(201,169,110,0.25);
+      background: var(--creme);
+    }
+    .marche-emoji { font-size: 24px; flex-shrink: 0; }
+    .marche-detail-title {
+      font-weight: 500; font-size: 14px; color: var(--dark); margin-bottom: 2px;
+    }
+    .marche-detail-sub {
+      font-size: 12px; color: var(--light-text);
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: var(--dark);
+      padding: 96px 64px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .contact::before {
+      content: ''; position: absolute;
+      width: 600px; height: 600px; border-radius: 50%;
+      border: 1px solid rgba(201,169,110,0.1);
+      top: -200px; left: 50%; transform: translateX(-50%);
+    }
+    .contact .section-tag { justify-content: center; }
+    .contact .section-tag::before { display: none; }
+    .contact .section-title { color: var(--creme); text-align: center; }
+    .contact .section-title em { color: var(--rose); }
+    .contact-desc {
+      font-size: 15px; line-height: 1.9;
+      color: rgba(255,248,240,0.62); max-width: 480px;
+      margin: 0 auto 48px;
+    }
+    .contact-links {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--creme); text-decoration: none;
+      padding: 14px 28px;
+      border: 1px solid rgba(255,248,240,0.25);
+      transition: all 0.22s;
+    }
+    .contact-link:hover { border-color: var(--or); color: var(--or); }
+    .contact-link.primary {
+      background: var(--or-deep); border-color: var(--or-deep);
+    }
+    .contact-link.primary:hover {
+      background: var(--aubergine); border-color: var(--aubergine); color: var(--creme);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111111;
+      padding: 24px 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(201,169,110,0.12);
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 16px; color: var(--or);
+    }
+    .footer-copy { font-size: 11px; color: rgba(255,248,240,0.3); letter-spacing: 0.08em; }
+    .footer-siren { font-size: 10px; color: rgba(255,248,240,0.18); letter-spacing: 0.06em; }
+
+    /* ── DIVIDER ── */
+    .divider { height: 1px; background: rgba(201,169,110,0.2); margin: 0 64px; }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .revealed { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { gap: 20px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 80px 32px 48px; }
+      .hero-right { display: none; }
+      .histoire { grid-template-columns: 1fr; }
+      .histoire-left { padding: 64px 32px; }
+      .histoire-right { padding: 48px 32px; display: none; }
+      .section { padding: 64px 32px; }
+      .destinations-grid { grid-template-columns: 1fr; gap: 16px; }
+      .formats-grid { grid-template-columns: 1fr; gap: 20px; }
+      .collection-header { flex-direction: column; align-items: flex-start; }
+      .marches-inner { flex-direction: column; }
+      .marches { padding: 64px 32px; }
+      .contact { padding: 64px 32px; }
+      footer { padding: 20px 32px; flex-direction: column; gap: 8px; text-align: center; }
+      .divider { margin: 0 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Mad'moiselle <span>by Naya Délice</span></div>
+    <ul class="nav-links">
+      <li><a href="#histoire">L'histoire</a></li>
+      <li><a href="#collection">La collection</a></li>
+      <li><a href="#formats">Formats</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Pâtisserie artisanale · Grenoble</div>
+      <h1 class="hero-title">
+        Un voyage<br><em>gourmand</em><br>qui réveille<br>l'enfance
+      </h1>
+      <p class="hero-subtitle">Madeleines artisanales du monde</p>
+      <p class="hero-desc">
+        Six destinations. Six recettes. Des ingrédients soigneusement sélectionnés, un savoir-faire pâtissier sincère, et l'envie de partager des instants simples et précieux.
+      </p>
+      <div class="hero-dots">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <button class="hero-cta" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">
+        Découvrir la collection &nbsp;→
+      </button>
+    </div>
+    <div class="hero-right">
+      <div class="orbit-ring" style="width:480px;height:480px;top:calc(50% - 240px);left:calc(50% - 240px)"></div>
+      <div class="orbit-ring" style="width:580px;height:580px;top:calc(50% - 290px);left:calc(50% - 290px)"></div>
+      <div class="hero-visual">
+        <span class="hero-icon">🧁</span>
+        <div class="hero-badge">Tour<br>du<br>Monde</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTOIRE -->
+  <section class="histoire" id="histoire">
+    <div class="histoire-left">
+      <div class="section-tag">Notre histoire</div>
+      <h2 class="section-title">La pâtisserie<br>comme <em>souvenir</em></h2>
+      <p class="histoire-text">
+        Née d'une passion profonde pour les douceurs qui marquent l'enfance, Mad'moiselle réinvente la madeleine iconique à travers des inspirations venues des quatre coins du monde. Chaque création est une escale : un savoir-faire artisanal rencontrant des ingrédients choisis avec soin.
+      </p>
+      <div class="valeurs-grid">
+        <div class="valeur-item">
+          <div class="valeur-title">Passion</div>
+          <div class="valeur-desc">L'amour de la pâtisserie à chaque création</div>
+        </div>
+        <div class="valeur-item">
+          <div class="valeur-title">Artisanat</div>
+          <div class="valeur-desc">Préparé avec soin, dans le respect du métier</div>
+        </div>
+        <div class="valeur-item">
+          <div class="valeur-title">Qualité</div>
+          <div class="valeur-desc">Ingrédients sélectionnés pour leur authenticité</div>
+        </div>
+        <div class="valeur-item">
+          <div class="valeur-title">Voyage</div>
+          <div class="valeur-desc">Chaque saveur, une invitation à découvrir</div>
+        </div>
+      </div>
+    </div>
+    <div class="histoire-right">
+      <div class="manifeste-card">
+        <div class="manifeste-quote">
+          « La pâtisserie est bien plus qu'un plaisir sucré. C'est un souvenir.<br>Une émotion.<br>Un moment <strong>suspendu dans le temps.</strong> »
+        </div>
+        <div class="manifeste-sig">— Manifeste Mad'moiselle</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTION -->
+  <section class="collection section" id="collection">
+    <div class="collection-header">
+      <div>
+        <div class="section-tag">Collection signature</div>
+        <h2 class="section-title">Le Tour du <em>Monde</em></h2>
+      </div>
+      <p class="collection-intro">Six destinations, six rencontres entre la pâtisserie française et les saveurs du monde. Même format iconique, identités gustatives uniques.</p>
+    </div>
+
+    <div class="destinations-grid">
+
+      <!-- ITALIE -->
+      <div class="destination-card reveal">
+        <div class="card-header">
+          <div class="card-accent" style="background: #009246;"></div>
+          <span class="card-flag">🇮🇹</span>
+          <div class="card-destination">Italie</div>
+          <div class="card-name">Madeleine <em>Amarena</em></div>
+        </div>
+        <div class="card-body">
+          <p class="card-flavor">Cerise amarena confite, éclats de chocolat noir fondant — une dolce vita en bouchée.</p>
+          <div class="card-inclusions">
+            <span class="inclusion-tag">Amarena confite</span>
+            <span class="inclusion-tag">Éclats chocolat noir</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- JAPON -->
+      <div class="destination-card reveal">
+        <div class="card-header">
+          <div class="card-accent" style="background: #BC002D;"></div>
+          <span class="card-flag">🇯🇵</span>
+          <div class="card-destination">Japon</div>
+          <div class="card-name">Madeleine <em>Matcha</em></div>
+        </div>
+        <div class="card-body">
+          <p class="card-flavor">Matcha cérémonial intense, sésame noir toasté — zen et raffinement en harmonie.</p>
+          <div class="card-inclusions">
+            <span class="inclusion-tag">Matcha cérémonial</span>
+            <span class="inclusion-tag">Sésame noir</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SÉNÉGAL -->
+      <div class="destination-card reveal">
+        <div class="card-header">
+          <div class="card-accent" style="background: #00853F;"></div>
+          <span class="card-flag">🇸🇳</span>
+          <div class="card-destination">Sénégal</div>
+          <div class="card-name">Madeleine <em>Tropicale</em></div>
+        </div>
+        <div class="card-body">
+          <p class="card-flavor">Mangue, coco, ananas et gingembre confit — un soleil tropical en une bouchée.</p>
+          <div class="card-inclusions">
+            <span class="inclusion-tag">Mangue</span>
+            <span class="inclusion-tag">Coco</span>
+            <span class="inclusion-tag">Ananas</span>
+            <span class="inclusion-tag">Gingembre confit</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIBAN -->
+      <div class="destination-card reveal">
+        <div class="card-header">
+          <div class="card-accent" style="background: var(--aubergine);"></div>
+          <span class="card-flag">🇱🇧</span>
+          <div class="card-destination">Liban</div>
+          <div class="card-name">Madeleine <em>Rose & Pistache</em></div>
+        </div>
+        <div class="card-body">
+          <p class="card-flavor">Eau de rose délicate, pétales de rose, éclats de pistache — élégance levantine.</p>
+          <div class="card-inclusions">
+            <span class="inclusion-tag">Eau de rose</span>
+            <span class="inclusion-tag">Pétales de rose</span>
+            <span class="inclusion-tag">Éclats pistache</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALGÉRIE -->
+      <div class="destination-card reveal">
+        <div class="card-header">
+          <div class="card-accent" style="background: var(--or);"></div>
+          <span class="card-flag">🇩🇿</span>
+          <div class="card-destination">Algérie</div>
+          <div class="card-name">Madeleine <em>Datte & Cannelle</em></div>
+        </div>
+        <div class="card-body">
+          <p class="card-flavor">Datte fondante et cannelle dorée — chaleur du Maghreb et douceur authentique.</p>
+          <div class="card-inclusions">
+            <span class="inclusion-tag">Datte</span>
+            <span class="inclusion-tag">Cannelle</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRÉSIL -->
+      <div class="destination-card reveal">
+        <div class="card-header">
+          <div class="card-accent" style="background: #009C3B;"></div>
+          <span class="card-flag">🇧🇷</span>
+          <div class="card-destination">Brésil</div>
+          <div class="card-name">Madeleine <em>Coco Citron Vert</em></div>
+        </div>
+        <div class="card-body">
+          <p class="card-flavor">Noix de coco râpée et zeste de citron vert — fraîcheur tropicale, éclat brésilien.</p>
+          <div class="card-inclusions">
+            <span class="inclusion-tag">Coco râpée</span>
+            <span class="inclusion-tag">Citron vert</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FORMATS -->
+  <section class="formats section" id="formats">
+    <div class="section-tag">Nos formats</div>
+    <h2 class="section-title">Pour chaque <em>occasion</em></h2>
+    <div class="formats-grid">
+
+      <div class="format-card reveal">
+        <span class="format-icon">🫙</span>
+        <div class="format-label">À l'unité</div>
+        <div class="format-name">La Pièce</div>
+        <div class="format-desc">Une destination, une dégustation. Idéal pour tester toutes les escales.</div>
+        <div class="format-price">4,90 <span>€ / pièce</span></div>
+      </div>
+
+      <div class="format-card featured reveal">
+        <div class="format-badge">Bestseller</div>
+        <span class="format-icon">🎁</span>
+        <div class="format-label">Coffret voyage</div>
+        <div class="format-name">Le Coffret</div>
+        <div class="format-desc">Un tour du monde en boîte. Nos destinations réunies pour offrir ou s'offrir.</div>
+        <div class="format-price">22 – 44,90 <span>€</span></div>
+      </div>
+
+      <div class="format-card reveal">
+        <span class="format-icon">🏪</span>
+        <div class="format-label">Professionnel</div>
+        <div class="format-name">B2B & Pop-up</div>
+        <div class="format-desc">Coffee shops, salons de thé, événements. Tarifs et conditions sur demande.</div>
+        <div class="format-price" style="font-family:'Jost';font-size:16px;letter-spacing:0.05em">Sur devis</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MARCHÉS -->
+  <section class="marches reveal" id="marches">
+    <div class="marches-inner">
+      <div class="marches-text">
+        <div class="section-tag">Où nous trouver</div>
+        <h2 class="section-title">Au marché,<br>chaque <em>semaine</em></h2>
+        <p>Venez nous rencontrer au marché de Meylan, en région grenobloise. C'est là que tout a commencé — venez goûter, découvrir et repartir avec votre escale gourmande préférée.</p>
+      </div>
+      <div class="marches-info">
+        <div class="marche-item">
+          <span class="marche-emoji">📍</span>
+          <div>
+            <div class="marche-detail-title">Marché de Meylan</div>
+            <div class="marche-detail-sub">Agglomération grenobloise, Isère</div>
+          </div>
+        </div>
+        <div class="marche-item">
+          <span class="marche-emoji">📸</span>
+          <div>
+            <div class="marche-detail-title">@madmoiselle2026</div>
+            <div class="marche-detail-sub">Suivez nos actualités sur Instagram</div>
+          </div>
+        </div>
+        <div class="marche-item">
+          <span class="marche-emoji">✉️</span>
+          <div>
+            <div class="marche-detail-title">Commandes & B2B</div>
+            <div class="marche-detail-sub">Contactez-nous pour les professionnels</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-tag">Nous retrouver</div>
+    <h2 class="section-title">Venez nous <em>rencontrer</em></h2>
+    <p class="contact-desc">
+      Marchés, événements, collaborations B2B — Mad'moiselle est à votre disposition pour créer ensemble des moments gourmands inoubliables.
+    </p>
+    <div class="contact-links">
+      <a class="contact-link primary" href="#">📍 Marché de Meylan</a>
+      <a class="contact-link" href="mailto:contact@madmoiselle-nayadelice.fr">✉ Nous écrire</a>
+      <a class="contact-link" href="https://instagram.com/madmoiselle2026" target="_blank" rel="noopener">@madmoiselle2026</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Mad'moiselle by Naya Délice</div>
+    <div class="footer-copy">© 2025 Mad'moiselle — Artisan pâtissier · Grenoble</div>
+    <div class="footer-siren">SIREN 995 085 263</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('revealed'), i * 90);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
